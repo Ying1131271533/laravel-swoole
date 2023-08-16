@@ -1,0 +1,42 @@
+{
+	"authHost": "http://api.ying.com",
+	"authEndpoint": "/api/swoole/auth",
+	"clients": [],
+	"database": "redis",
+	"databaseConfig": {
+		"redis": {
+            "host": "127.0.0.1",
+            "port": "63790",
+            "password": "Ym-12]i4!gDal^Jc/3@n.c^Mh"
+        },
+		"sqlite": {
+			"databasePath": "/database/laravel-echo-server.sqlite"
+		}
+	},
+	"devMode": true,
+	"host": null,
+	"port": "6001",
+	"protocol": "http",
+	"socketio": {
+		"cors": {
+			"origin": "http://localhost:8080",
+			"credentials": true
+		}
+	},
+	"secureOptions": 67108864,
+	"sslCertPath": "",
+	"sslKeyPath": "",
+	"sslCertChainPath": "",
+	"sslPassphrase": "",
+	"subscribers": {
+		"http": true,
+		"redis": true
+	},
+	"apiOriginAllow": {
+		"allowCors": false,
+		"allowOrigin": "",
+		"allowMethods": "",
+		"allowHeaders": "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization, X-XSRF-TOKEN, X-Socket-Id"
+	}
+	
+}

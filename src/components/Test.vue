@@ -1,0 +1,66 @@
+<template>
+    <div>
+        <div v-for="message in messages" :key="message.id">
+            {{ message.user.name }}: {{ message.text }}
+        </div>
+
+        <form @submit.prevent="send">
+            <input type="text" v-model="text">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</template>
+
+<script>
+import Echo from "laravel-echo";
+const axios = require('axios');
+window.io = require('socket.io-client');
+
+
+export default {
+    name: 'Test',
+    data() {
+        return {
+            messages: [],
+            text: "",
+        };
+    },
+
+    mounted() {
+        this.initEcho();
+        this.fetchMessages();
+    },
+
+    methods: {
+        initEcho() {
+            window.Echo = new Echo({
+                broadcaster: "socket.io",
+                // host: "192.168.56.56",
+                host: 'http://api.ying.com:6001',
+                withCredentials: true
+            });
+
+            // 接收公共频道
+            // window.Echo.channel('swoole-test');
+            window.Echo.channel('swoole-test').listen("SwooleTest", (event) => {
+            // 接收私有频道
+            // window.Echo.private('swoole-test').listen("SwooleTest", (event) => {
+                console.log(event)
+                // this.messages.push(event.message);
+            });
+        },
+
+        fetchMessages() {
+            axios.get('http://api.ying.com/api/swoole/messages').then((response) => {
+                this.messages = response.data.messages;
+            });
+        },
+
+        send() {
+            axios.post('http://api.ying.com/api/swoole/messages', { text: this.text }).then(() => {
+                this.text = "";
+            });
+        },
+    },
+};
+</script>
