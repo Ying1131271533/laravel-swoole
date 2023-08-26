@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Test from '@/components/Test'
-import Notify from '@/components/Notify'
-import Room from '@/components/Room'
+import Dispatch from '@/components/Dispatch'
+import Pay from '@/components/Pay'
+import RoomNotify from '@/components/RoomNotify'
+import RoomAdmin from '@/components/RoomAdmin'
+import RoomUser from '@/components/RoomUser'
+import Swoole from '@/components/Swoole'
 
 const routes = [
   {
@@ -26,14 +30,34 @@ const routes = [
     component: Test
   },
   {
-    path: '/notify',
-    name: 'notify',
-    component: Notify
+    path: '/pay',
+    name: 'pay',
+    component: Pay
   },
   {
-    path: '/room',
-    name: 'room',
-    component: Room
+    path: '/dispatch',
+    name: 'dispatch',
+    component: Dispatch
+  },
+  {
+    path: '/room-notify',
+    name: 'room-notify',
+    component: RoomNotify
+  },
+  {
+    path: '/room-admin',
+    name: 'room-admin',
+    component: RoomAdmin
+  },
+  {
+    path: '/room-user',
+    name: 'room-user',
+    component: RoomUser
+  },
+  {
+    path: '/swoole',
+    name: 'swoole',
+    component: Swoole
   }
 ]
 

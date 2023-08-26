@@ -1,14 +1,5 @@
 <template>
-    <div>
-        <div v-for="message in messages" :key="message.id">
-            {{ message.user.name }}: {{ message.text }}
-        </div>
-
-        <form @submit.prevent="send">
-            <input type="text" v-model="text">
-            <button type="submit">Send</button>
-        </form>
-    </div>
+    
 </template>
 
 <script>
@@ -28,7 +19,6 @@ export default {
 
     mounted() {
         this.initEcho();
-        this.fetchMessages();
     },
 
     methods: {
@@ -41,25 +31,13 @@ export default {
             });
 
             // 接收公共频道
-            // window.Echo.channel('swoole-test');
-            window.Echo.channel('swoole-test').listen("SwooleTest", (event) => {
-            // 接收私有频道
-            // window.Echo.private('swoole-test').listen("SwooleTest", (event) => {
-                console.log(event)
-                // this.messages.push(event.message);
-            });
-        },
-
-        fetchMessages() {
-            axios.get('http://api.ying.com/api/swoole/messages').then((response) => {
-                this.messages = response.data.messages;
-            });
-        },
-
-        send() {
-            axios.post('http://api.ying.com/api/swoole/messages', { text: this.text }).then(() => {
-                this.text = "";
-            });
+            window.Echo.channel('swoole-test');
+            // window.Echo.channel('swoole-test').listen("SwooleTest", (event) => {
+            // // 接收私有频道
+            // // window.Echo.private('swoole-test').listen("SwooleTest", (event) => {
+            //     console.log(event)
+            //     // this.messages.push(event.message);
+            // });
         },
     },
 };

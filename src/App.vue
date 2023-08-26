@@ -3,8 +3,12 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/test">测试</router-link> |
-    <router-link to="/notify">消息通知</router-link> |
-    <router-link to="/room">聊天室</router-link>
+    <router-link to="/pay">订单已支付</router-link> |
+    <router-link to="/dispatch">发货通知</router-link> |
+    <router-link to="/room-notify">聊天室申请</router-link> |
+    <router-link to="/room-user">聊天室-用户</router-link> |
+    <router-link to="/room-admin">聊天室-管理员</router-link> |
+    <router-link to="/swoole">Swoole</router-link>
   </nav>
   <router-view />
 </template>
